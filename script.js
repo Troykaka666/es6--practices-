@@ -156,23 +156,129 @@ var box5 = {
 // }
 // box66.clickMe();
 
-function Person(name){
-    this.name = name;
+// function Person(name){
+//     this.name = name;
+// }
+// //es5
+// Person.prototype.myFriends5 = function(friends){
+//     var arr = friends.map(function(el){
+//         return this.name + ' is friend with ' + el;
+//     }.bind(this));
+//     console.log(arr);
+// }
+
+// var friends = ['bob','jae','smith'];
+// // s
+
+// //es6 
+// Person.prototype.myFriends6 = function(friends){
+//     var arr = friends.map(el => `${this.name} is friend withs ${el}s`);
+//     console.log(arr);
+// }
+// new Person('Troy').myFriends6(friends);
+
+
+//////////////////////////////////////////////////////
+//////////Lecture: Destructuring
+
+//ES5
+// var john = ['John', 26];
+// var name = john[0];
+// var age = john[1];
+
+//ES6
+
+// const [name, year] = ['John',55];
+// console.log(year);
+
+
+
+//////////////////////////////////////////////////////
+//////////Lecture: Arrays
+// const boxes = document.querySelectorAll('.box');
+
+//ES5
+// var boxesArr5 = Array.prototype.slice.call(boxes);
+// boxesArr5.forEach(function(cur){
+//     cur.style.backgroundColor = 'dodgerblue';
+// });
+// //ES6
+// const boxesArr6 = Array.from(boxes); // transform an object into array
+// boxesArr6.forEach(cur => cur.style.backgroundColor = 'orange');
+
+// e of array: means every element of an array
+// for(const cur of boxesArr6){
+//     if (cur.className === 'box blue') {
+//         continue;
+//     }
+//     cur.textContent = 'I changed to blue';
+// }
+
+var ages = [12, 17, 8, 21, 14, 11];
+var full = ages.map(function(cur){
+    return cur >= 18;
+})
+// console.log(full);
+
+// //es6
+// //look for the index
+// console.log(ages.findIndex(cur => cur >= 18)); 
+// //look for the element
+// console.log(ages.find(cur => cur >= 18));
+
+//////////////////////////////////////////////////////
+//////////Lecture: spread operator
+function addFourAges(a,b,c,d){
+    return a + b + c + d;
 }
 //es5
-Person.prototype.myFriends5 = function(friends){
-    var arr = friends.map(function(el){
-        return this.name + ' is friend with ' + el;
-    }.bind(this));
-    console.log(arr);
-}
+var ages = [18,30,12,21];
+// var sum2 = addFourAges.apply(ages);
 
-var friends = ['bob','jae','smith'];
-// s
+//es6
+const sum3 = addFourAges(...ages);
+// console.log(sum3);
 
-//es6 
-Person.prototype.myFriends6 = function(friends){
-    var arr = friends.map(el => `${this.name} is friend withs ${el}s`);
-    console.log(arr);
+const familySmith = ['john','jane','mark'];
+const familyMiller = ['mary','bob','ann'];
+const bigfamily = [...familySmith, ...familyMiller];
+// console.log(bigfamily); //combine two arrays together 
+
+
+
+//////////////////////////////////////////////////////
+//////////Lecture: rest parameters
+
+//ES5
+function isFullAge5(){
+    var argsArr = Array.prototype.slice.call(arguments);
+    // console.log(arguments);
+    argsArr.forEach(function(cur){
+        // console.log((2019 - cur) >= 18);
+    })
 }
-new Person('Troy').myFriends6(friends);
+isFullAge5(1990,2005,2008);
+//ES6 
+function isFullAge6(...years){
+    console.log(years);
+    years.forEach(cur => (2018 - cur) >= 18);
+}
+// isFullAge6(1990,2005,2008);
+
+
+//////////////////////////////////////////////////////
+//////////Lecture: default parameters
+
+//ES5
+// function Person(gender,name){
+//     this.gender = gender;
+//     this.name = name;
+// }
+
+//ES6
+function Person2(gender = 'Male', name){
+    this.gender = gender;
+    this.name = name;
+}
+var john1 = Person2("male", "john");
+console.log(john1);
