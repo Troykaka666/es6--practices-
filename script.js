@@ -276,9 +276,95 @@ function isFullAge6(...years){
 // }
 
 //ES6
-function Person2(gender = 'Male', name){
+function Person2(name, gender = 'Male'){
     this.gender = gender;
     this.name = name;
 }
-var john1 = Person2("male", "john");
-console.log(john1);
+var john1 = new Person2("john");
+
+
+//////////////////////////////////////////////////////
+//////////Lecture: Maps
+const question = new Map();
+question.set('question', 'What is the official name of the latest major js version?');
+question.set(1, "ES5");
+question.set(2, "es6");
+question.set(3, "ES2015");
+question.set(4, "ES7");
+question.set('answer', 3);
+question.set(true, 'Correct answer :D');
+question.set(false, 'Wrong, try again!');
+
+
+console.log(question.get('question'));
+console.log(question.size);
+
+if (question.has(4)) {
+    // question.delete(4); //delete an element by using thekey in map
+    // console.log('Answer 4 is here');  
+}
+
+// question.forEach((value, key) => 
+//     console.log(`This is ${key}, and it's set to ${value}`)
+// );
+// question.clear(); clear all the value in the map
+
+for(let [key, value] of question.entries()){
+    // console.log(`This is ${key}, and it's set to ${value}`);
+}
+
+// const ans = parseInt(prompt('Write the correct answer'));
+// const result = question.get(ans === question.get('answer'));
+// console.log(result);2
+
+
+
+//////////////////////////////////////////////////////
+//////////Lecture: Classes
+
+//ES5
+// var Person5 = function(name, yearOfBirth, job){
+//     this.name = name;
+//     this.yearOfBirth = yearOfBirth;
+//     this.job = job;
+// }
+
+// Person5.prototype.calculateage = function(){
+//     var age = new Date().getFullYear - this.yearOfBirth;
+//     console.log(age);
+// }
+
+// var john5 = new Person5('John',1992, 'teacher');
+
+//ES6
+class Person6 {
+    constructor(name, yearOfBirth, job){
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    } 
+
+    calculateage(){
+        var age = new Date().getFullYear() - this.yearOfBirth;
+       console.log(age);
+    }
+     greeting() {
+        console.log("hi")     
+    }
+}
+
+const john6 = new Person6('John', 1992, 'teacher');
+john6.greeting();
+john6.calculateage();
+
+//////////////////////////////////////////////////////
+//////////Lecture: Classes and Subclasses
+var Person5 = function(name, yearOfBirth, job){
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+Person5.prototype.calculateage = function(){
+        var age = new Date().getFullYear - this.yearOfBirth;
+        console.log(age);
+    }
