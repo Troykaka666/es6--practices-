@@ -368,3 +368,4 @@ Person5.prototype.calculateage = function(){
         var age = new Date().getFullYear - this.yearOfBirth;
         console.log(age);
     }
+

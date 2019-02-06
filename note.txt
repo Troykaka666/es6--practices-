@@ -1,0 +1,8 @@
+promise in JS:
+object that keeps track about wheter a certain event has happened already or not
+determines what happens after the event has happened
+implements the concept of a future value that we are expecting
+
+await: it will retrive the value from a promise until it is fullfill
+
+json: will return a promise
